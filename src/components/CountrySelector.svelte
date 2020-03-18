@@ -59,6 +59,7 @@ label {
 }
 .select select {
   display: inline-block;
+  font-size: .875rem;
   width: 100%;
   margin: 0;
   padding: .5rem 2.25rem .5rem 1rem;
