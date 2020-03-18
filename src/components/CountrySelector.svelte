@@ -42,6 +42,7 @@ function handleInput(e) {
 
 <style>
 label {
+  display: block;
   font-size: .875rem;
   font-weight: 600;
   margin-bottom: .5rem;
