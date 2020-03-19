@@ -51,13 +51,13 @@ article {
 
 .value {
   font-size: 3rem;
-  font-weight: 200;
+  font-weight: 400;
   margin-bottom: .5rem;
 }
 
 .label {
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 400;
   font-size: .875rem;
   letter-spacing: .05em;
 }
