@@ -1,44 +1,18 @@
 <script>
-import { createEventDispatcher } from 'svelte'
-const dispatch = createEventDispatcher()
-
-let promise = fetchCountries()
-
-async function fetchCountries() {
-  let url = 'https://covid19.mathdro.id/api/countries'
-  let res = await fetch(url)
-  let json = await res.json()
-
-  if (res.ok) {
-    return json
-  } else {
-    throw new Error(json)
-  }
-}
-
-function handleInput(e) {
-  promise.then(res => {
-    dispatch('selected', res.iso3[e.target.value])
-  })
-}
+export let countries
+export let country
 </script>
 
-{#await promise}
-<p>Loading countries...</p>
-{:then response}
 <label for="country-select">Choose a country:</label>
 
 <div class="select">
-  <select name="countries" id="country-select" on:input={handleInput}>
+  <select name="countries" id="country-select" bind:value={country}>
       <option value="">--Please choose an option--</option>
-      {#each Object.keys(response.countries) as countryName}
-      <option value={response.countries[countryName]}>{countryName}</option>
+      {#each countries as country}
+      <option value={country.code}>{country.name}</option>
       {/each}
   </select>
 </div>
-{:catch error}
-<p style="color: red">Error loading countries</p>
-{/await}
 
 <style>
 label {
