@@ -3,53 +3,30 @@ export let countries
 export let country
 </script>
 
-<label for="country-select">Choose a country:</label>
+<label
+  for="country-select"
+  class="block text-sm font-semibold mb-2">Choose a country:</label>
 
-<div class="select">
-  <select name="countries" id="country-select" bind:value={country}>
-      <option value="">--Please choose an option--</option>
+<div class="select relative inline-block text-gray-700 w-full max-w-md mb-8">
+  <select
+    class="inline-block text-base w-full m-0 py-2 pl-4 pr-8 leading-normal text-gray-700 bg-white border border-gray-400 rounded-sm cursor-pointer outline-none focus:border-transparent focus:shadow-outline"
+    name="countries" id="country-select" bind:value={country}>
+      <option class="bg-white" value="">--Please choose an option--</option>
       {#each countries as country}
-      <option value={country.code}>{country.name}</option>
+      <option class="bg-white" value={country.iso3}>{country.name}</option>
       {/each}
   </select>
 </div>
 
 <style>
-label {
-  display: block;
-  font-size: .875rem;
-  font-weight: 600;
-  margin-bottom: .5rem;
-}
-
 /* styles taken from https://github.com/mdo/wtf-forms/blob/master/wtf-forms.css and modified */
-.select {
-  position: relative;
-  display: inline-block;
-  color: #555;
-  width: 100%;
-  max-width: 30rem;
-  margin-bottom: 2rem;
-}
-.select select {
-  display: inline-block;
-  font-size: 1rem;
-  width: 100%;
-  margin: 0;
-  padding: .5rem 2.25rem .5rem 1rem;
-  line-height: 1.5;
-  color: #555;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: .25rem;
-  cursor: pointer;
-  outline: 0;
+select {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 /* Undo the Firefox inner focus ring */
-.select select:focus:-moz-focusring {
+select:focus:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #000;
 }
@@ -70,70 +47,19 @@ label {
   border-left: .35rem solid transparent;
 }
 
-/* Hover state */
-/* Uncomment if you need it, but be aware of the sticky iOS states.
-.select select:hover {
-  background-color: #ddd;
-}
-*/
-
-/* Focus */
-.select select:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
-}
-
 /* Active/open */
-.select select:active {
+select:active {
   color: #fff;
   background-color: #0074d9;
-}
-
-/* Hide the arrow in IE10 and up */
-.select select::-ms-expand {
-  display: none;
 }
 
 /* Media query to target Firefox only */
 @-moz-document url-prefix() {
   /* Firefox hack to hide the arrow */
-  .select select {
+  select {
     text-indent: 0.01px;
     text-overflow: '';
     padding-right: 1rem;
-  }
-
-  /* <option> elements inherit styles from <select>, so reset them. */
-  .select option {
-    background-color: #fff;
-  }
-}
-
-/* IE9 hack to hide the arrow */
-@media screen and (min-width:0\0) {
-  .select select {
-    z-index: 1;
-    padding: .5rem 1.5rem .5rem 1rem;
-  }
-  .select:after {
-    z-index: 5;
-  }
-  .select:before {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    bottom: 0;
-    z-index: 2;
-    content: "";
-    display: block;
-    width: 1.5rem;
-    background-color: #eee;
-  }
-  .select select:hover,
-  .select select:focus,
-  .select select:active {
-    color: #555;
-    background-color: #eee;
   }
 }
 </style>

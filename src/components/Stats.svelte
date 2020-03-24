@@ -5,17 +5,10 @@ let stats
 $: fetch(url).then(res => res.json()).then(data => { stats = data })
 </script>
 
-<section>
+<section class="mb-8">
   {#if !stats}
     <p>loading stats...</p>
   {:else}
     <StatCard stats={stats} />
   {/if}
 </section>
-
-
-<style>
-section {
-  margin-bottom: 2rem;
-}
-</style>
